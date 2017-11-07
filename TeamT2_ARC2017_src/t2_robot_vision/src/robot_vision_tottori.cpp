@@ -1,9 +1,4 @@
-﻿/*
- * 鳥取大認識モジュール
- * 	キャリブレーション部→　：(9) CalibratedData.msg
- *	→認識統合部　　　　：(11) RecognizedItem.msg
- */
-
+﻿
 #include <robot_vision_tottori.h>
 
 #include <ros/package.h>
@@ -59,7 +54,7 @@ void robot_vision_tottori::onInit()
   tottori_pub_ = nh.advertise<catch_robot_vision::RecognizedItem>("recognized_item", 10);
 
 
-  // darknet初期化 はじめ by nishiyama
+  // darknet初期化 はじめ by 
   ROS_INFO_STREAM("[Tottori DARKNET] Sart loading dictionary");
 
   char datacfg_filename[512] = "/home/dl-box/catkin_ws/src/catch_robot_vision/src/darknet/data/mytrain.dataset";
@@ -84,7 +79,7 @@ void robot_vision_tottori::onInit()
   srand(2222222);
 
   ROS_INFO_STREAM("[Tottori DARKNET] End loading dictionary");
-  // darknet初期化 おわり by nishiyama
+  // darknet初期化 おわり by 
 
   ROS_INFO_STREAM( "robot_vision_tottori::onInit() end" );
 }
@@ -136,7 +131,7 @@ void robot_vision_tottori::calibratedDataCallback(const catch_robot_vision::Cali
 
 
   //
-  // ここで認識処理  by nishiyama
+  // ここで認識処理  by 
   //
   ROS_INFO_STREAM("[Tottori DARKNET] Start detection");
   //printf("Size %d %d %d\n", cMat_v[0].cols, cMat_v[0].rows, cMat_v[0].channels());
@@ -150,7 +145,7 @@ void robot_vision_tottori::calibratedDataCallback(const catch_robot_vision::Cali
   float nms=.4;
   int i,j,k;
 
-  // darknetの画像フォーマットに変換 by nishiyama
+  // darknetの画像フォーマットに変換 by 
   image im = make_image(cMat_v[0].cols, cMat_v[0].rows, cMat_v[0].channels());
   for(i = 0; i < cMat_v[0].rows; ++i){
     for(k= 0; k < cMat_v[0].channels(); ++k){
@@ -162,20 +157,20 @@ void robot_vision_tottori::calibratedDataCallback(const catch_robot_vision::Cali
   //rgbgr_image(im);
   //save_image(im, debug_filename); // Debug
 
-  // 学習済みモデルの画像サイズに変換 by nishiyama
+  // 学習済みモデルの画像サイズに変換 by 
   image sized = letterbox_image(im, darknet_model.net.w, darknet_model.net.h);
   //save_image(sized, debug_filename); // Debug
   layer l = darknet_model.net.layers[darknet_model.net.n-1];
   //printf("darknet_model.net.n-1 = %d\n", darknet_model.net.n-1);
 
-  // 出力先の確保 by nishiyama
+  // 出力先の確保 by 
   box *boxes = (box *)calloc(l.w*l.h*l.n, sizeof(box));
   float **probs = (float **)calloc(l.w*l.h*l.n, sizeof(float *));
   for(j = 0; j < l.w*l.h*l.n; ++j){
     probs[j] = (float *)calloc(l.classes + 1, sizeof(float *));
   }
 
-  // 学習済みモデルで検出 by nishiyama
+  // 学習済みモデルで検出 by 
   float *X = sized.data;
   network_predict(darknet_model.net, X);
   //get_region_boxes(l, im.w, im.h, darknet_model.net.w, darknet_model.net.h, thresh, probs, boxes, 0, 0, hier_thresh, 1); // old version
@@ -185,13 +180,13 @@ void robot_vision_tottori::calibratedDataCallback(const catch_robot_vision::Cali
   do_nms_obj(boxes, probs, l.w*l.h*l.n, l.classes, nms);
   ROS_INFO_STREAM("[Tottori DARKNET] Start detection" << __LINE__);
 
-#define NISHIYAMA_PITCH_YAW
-#ifdef NISHIYAMA_PITCH_YAW
+#define _PITCH_YAW
+#ifdef _PITCH_YAW
   int32_t pitch_list[150] = {-90,90,-90,90,-90,90,0,0,0,0,-90,90,-90,90,-90,90,0,0,0,0,-90,90,0,0,0,0,-90,90,0,0,0,0,-90,90,0,0,0,0,-90,90,0,0,0,0,-90,90,-90,90,0,0,0,0,-90,90,0,0,0,0,-90,90,90,-90,90,-90,-90,90,-90,90,0,0,0,0,-90,90,0,0,0,0,-90,90,0,0,0,0,-90,90,-90,90,0,0,0,0,-90,90,-90,90,-90,0,-90,90,-90,0,0,0,0,90,-90,0,0,0,0,90,-90,90,-90,90,-90,90,-90,0,0,0,0,90,-90,0,0,0,0,90,-90,0,0,0,0,90,90,-90,90,-90,0,0,0,0,90,-90,90,-90,90,-90};
   int32_t yaw_list[150] ={0,0,0,0,0,0,0,90,180,270,0,0,0,0,0,0,0,90,180,270,0,0,0,90,180,270,0,0,0,90,180,270,0,0,0,90,180,270,0,0,0,90,180,270,0,0,0,0,0,90,180,270,0,0,0,90,180,270,0,0,0,0,0,0,0,0,0,0,0,90,180,270,0,0,0,90,180,270,0,0,0,90,180,270,0,0,0,0,0,90,180,270,0,0,0,0,0,0,0,0,0,0,90,180,270,0,0,0,90,180,270,0,0,0,0,0,0,0,0,0,90,180,270,0,0,0,90,180,270,0,0,0,90,180,270,0,0,0,0,0,0,90,180,270,0,0,0,0,0,0};
 #endif
 
-  // 座標を変換し結果のメッセージを送信 by nishiyama
+  // 座標を変換し結果のメッセージを送信 by 
   int *class_label = new int [l.w*l.h*l.n];
   printf("lsize = %d * %d * %d\n", l.w, l.h, l.n);
   for(i = 0; i < l.w*l.h*l.n; ++i){
@@ -234,7 +229,7 @@ void robot_vision_tottori::calibratedDataCallback(const catch_robot_vision::Cali
       }
       int class_id = atoi(sisei_array[0]);
       int roll = 0;
-#ifdef NISHIYAMA_PITCH_YAW
+#ifdef _PITCH_YAW
       int32_t pitch = pitch_list[class_label[i]];
       int32_t yaw = yaw_list[class_label[i]];
 #else
@@ -287,7 +282,7 @@ void robot_vision_tottori::calibratedDataCallback(const catch_robot_vision::Cali
    
   ROS_INFO_STREAM("[Tottori DARKNET] End detection");
  
-// darknet検出 おわり  by nishiyama
+// darknet検出 おわり  by 
 
 end:
   ROS_INFO_STREAM("[END] job_no:" << jn << " robot_vision_tottori::calibratedDataCallback");
