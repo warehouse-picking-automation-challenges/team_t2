@@ -1,0 +1,71 @@
+# ロボットハンド進入方向原点(座標)[m]
+r_pos:
+  {
+    x: 0.850,
+    y: 0.600,
+    z: 100.0
+  }
+
+# GAP算出用GPに対する並進量[m]
+offset_ap:
+  {
+    x: 0.0,
+    y: 0.0,
+    z: -0.030
+  }
+
+# RP/RAP算出オフセット
+offset_rp_suction: 0.100                # (吸着)RP→本来の箱詰め位置間の距離[m]
+offset_rp_pinch: 0.150                  # (挟持)RP→本来の箱詰め位置間の距離[m]
+offset_rap: 0.070                       # RAP→RP間の距離[m]
+offset_rp_amnesty: 0.200                # Amnesty上方から落とす時のオフセット
+
+# RAP最大Z座標[m]
+rap_max_coord_z: 1.150
+
+# 箱詰時アイテム膨らませ量
+item_plump_th: 0.180                    # 膨らませ対象かどうか判定の閾値[m]
+item_plump_len_under: 0.060             # 閾値を超えないアイテムの膨らませ量[m]
+item_plump_len_over: 0.020              # 閾値を超えるアイテムの膨らませ量[m]
+
+# Voxel空間かさ上げオフセット[m]
+voxel_high_offset: 0.100
+
+# TOTE底面からのGP高さ制限
+tote_gp_limit: true                     # 機能(true=ON, false=OFF)
+tote_gp_offset: 0.015                   # TOTE底面からの制限高さ[m]
+
+# OctomapのRviz表示機能
+octo_rviz_mode: 2                       # モード(0=OFF, 1=最終更新Octomapのみ表示, 2=全Octomap表示)
+octo_rviz_alpha: 1.0                    # 透過度(0.0～1.0)
+octo_rviz_mult: 0.3                     # 倍率(scale = resolution * mult)
+
+# z軸方向GP押し込み機能
+gp_offset_z_suction: true               # (吸着)z軸方向GP押し込み (true=ON, false=OFF)
+gp_offset_z_pinch: true                 # (挟持)z軸方向GP押し込み (true=ON, false=OFF)
+gpoz_offset_suction: 0.050              # (吸着)GP押し込み距離[m] 
+gpoz_offset_pinch: 0.010                # (挟持)GP押し込み距離[m] 
+
+# z軸方向GP個数増加機能
+gp_increase_z: false                    # z軸方向GP増加 (true=ON, false=OFF)
+gpiz_best_score_num: 3                  # 対象とするスコア上位のGP数
+gpiz_front_gp_num: 2                    # 奥側GP増加数
+gpiz_back_gp_num: 1                     # 手前側GP増加数
+gpiz_front_gp_step: 0.030               # 奥側GP押し込み距離[m]
+gpiz_back_gp_step: 0.030                # 手前側GP押し込み距離[m]
+gpiz_score_step: 0.01                   # スコア調整刻み値
+
+# 回転方向GP個数増加機能
+gp_increase_rot: true                  # 回転方向GP増加(true=ON, false=OFF)
+gpir_best_score_num: 3                  # 対象とするスコア上位のGP数
+
+# place上方RP機能
+place_upside_rp_free_th: 0.9            # place上方のRPを算出するときの空率の閾値(0.0～1.0)
+place_upside_rp_score: 0.1              # place上方をRPとしたときのスコア
+
+# アイテム姿勢アラインメント機能
+item_align_th_xy: 0.0                   # xy軸まわりの回転補正閾値[deg](0.0: 補正無効)
+item_align_th_z: 0.0                    #  z軸まわりの回転補正閾値[deg](0.0: 補正無効)
+
+# スコア0のGPを削除する
+delete_score_zero: true

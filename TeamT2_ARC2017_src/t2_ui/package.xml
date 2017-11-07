@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<package>
+  <name>t2_ui</name>
+  <version>0.0.0</version>
+  <description>This package provides character-based UI.</description>
+  <maintainer email="Ksa-rc2017@ml.toshiba.co.jp">Toshiba Corporation, Toshiba Infrastructure Systems &amp; Solutions Corporation</maintainer>
+  <license>BSD</license>
+  <author>Toshiba Corporation, Toshiba Infrastructure Systems &amp; Solutions Corporation</author>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <build_depend>cmake_modules</build_depend>
+  <build_depend>roscpp</build_depend>
+  <build_depend>std_msgs</build_depend>
+  <build_depend>t2_msgs</build_depend>
+  <build_depend>roslint</build_depend>
+  <run_depend>roscpp</run_depend>
+  <run_depend>std_msgs</run_depend>
+  <run_depend>t2_msgs</run_depend>
+  <run_depend>message_runtime</run_depend>
+  <run_depend>roslint</run_depend>
+</package>

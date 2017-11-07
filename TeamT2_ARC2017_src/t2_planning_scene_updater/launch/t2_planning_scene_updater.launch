@@ -1,0 +1,15 @@
+<launch>
+  <arg name="use_storage_system_scene_file" default="false" />
+
+  <env name="ROSCONSOLE_CONFIG_FILE" value="$(find t2_planning_scene_updater)/config/custom_rosconsole.conf"/>
+  <node name="t2_planning_scene_updater" pkg="t2_planning_scene_updater" type="t2_planning_scene_updater" required="true"
+      launch-prefix="xterm -ls -xrm 'XTerm*selectToClipboard: true' -e" >
+    <param name="scene" value="$(find t2_description)/scene/storage_system.scene" if="$(arg use_storage_system_scene_file)"/>
+    <rosparam param="pinch_approach_acm_link" if="$(arg use_storage_system_scene_file)">[storage_system, TOTE1]</rosparam>
+    <rosparam param="pinch_approach_acm_link" unless="$(arg use_storage_system_scene_file)">[storage_bin_link, TOTE1]</rosparam>
+    <param name="item_mesh_path" value="package://t2_database/meshes/items/" />
+    <param name="container_mesh_path" value="package://t2_description/mesh/visual/" />
+    <rosparam command="load" file="$(find t2_planning_scene_updater)/config/planning_scene_updater.yaml" />
+  </node>
+
+</launch>

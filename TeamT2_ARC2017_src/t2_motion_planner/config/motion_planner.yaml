@@ -1,0 +1,47 @@
+motion_planner_configs:
+  plan_group: [arm, arm_suction, arm_pinch, calibration_board] # 使用するプラングループ
+  planning_time_default: 4.0 # Pickを除く計画タイムアウト時間[s]
+  planning_time_pick: 4.0 # Pick計画タイムアウト時間[s]
+  planning_retry_count_default: 2 # Pickを除く計画でBadまたはInvalid planのときに計画リトライする回数(0はリトライなし)
+  planning_retry_count_pick: 2 # Pick計画でBadまたはInvalid planのときに計画リトライする回数(0はリトライなし)
+  planner_id: RRTConnectkConfigDefault # 計画に使用するプランナー
+  planning_attempts_default: 1 # Pickを除く計画においてMoveIt!で計画を試行する回数(計画スレッド数以内であれば並列処理)
+  planning_attempts_pick: 1 # Pickを除く計画においてMoveIt!で計画を試行する回数(計画スレッド数以内であれば並列処理)
+  workspace: [1.12, 1.15, 1.1, 1.35, 2.20, 1.6] # 計画ワークスペース[m] center_x, center_y, center_z, size_x, size_y, size_z
+  end_effector_position_constraint_marekr: true # 位置制約マーカー表示ON/OFF
+  end_effector_position_constraint_box: [0.6, 0.1587, 1.1, 1.1665, 2.0063, 0.3] # エンドエフェクタ位置[m] pos_x, pos_y, pos_z, size_x, size_y, size_z
+  end_effector_position_constraint_midair_scale: 1.2 # コンテナ上空のエンドエフェクタ位置制約の許容範囲[コンテナサイズの倍数]
+  end_effector_position_constraint_container_mergin: 0.15 # コンテナ周囲のエンドエフェクタ位置制約のマージン[m]
+  cartesian_path_approach: true # アイテムに接近、離脱するとき直線軌道を使うか
+  cartesian_path_eef_step: 0.01 # 直線軌道のステップサイズ[m]
+  cartesian_path_jump_threshold: 4.0 # 直線軌道のポイント間のコンフィグレーション空間の最大閾値(0は無限大)
+  cartesian_path_approach_fraction_threshold: 0.5 # アイテム(GP)接近時の直線軌道到達度の閾値(0~1)
+  cartesian_path_error_recover_by_normal_plan: true # アイテム(GP)離脱時の直線軌道エラーを通常プランにより復帰
+  max_valid_path_length_threshold_near: 0.1 # 直線距離のnearとmiddleの閾値
+  max_valid_path_length_threshold_far: 1.0 # 直線距離のmiddleとfarの閾値
+  max_valid_path_length_near_strict: 1.0 # near範囲における軌道の長さの厳しい最大値
+  max_valid_path_length_near_lax: 2.0 # near範囲における軌道の長さの緩い最大値 
+  max_valid_path_length_middle_strict: 3.0 # middle範囲における軌道の長さの厳しい最大値
+  max_valid_path_length_middle_lax: 6.0 # middle範囲における軌道の長さの緩い最大値
+  max_valid_path_length_far_strict: 6.0 # far範囲における軌道の長さの厳しい最大値
+  max_valid_path_length_far_lax: 9.0 # far範囲における軌道の長さの緩い最大値
+  max_valid_path_smoothness: 3.0
+  n_points: 10 # Nポイントフィルタの最大経由点数
+  delete_trajectory_connection_points: true # 軌道の接点の削除
+  path_evaluate_joints: [rs20n_joint1, rs20n_joint2, rs20n_joint3, rs20n_joint4, rs20n_joint5, rs20n_joint6, rs20n_joint_eef2]
+  path_length_joint_weight: [1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0]
+  path_smooth_joint_weight: [1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0]
+  trajectory_collision_check_area: [1.990, 1.450, 1.824, 0.024, 0.5116] # 独自干渉チェックエリア[m] x_max, x_min, y_max, y_min, z
+  suction_sensor_waiting_time: 1.0 # 吸着センサーの応答待ち時間[s]
+  position_feedback_marker: false # 領域フィードバックマーカー表示ON/OFF
+  position_feedback_bin_midair_height: 0.8 # bin上空の床からの高さ[m] この領域のエンドエフェクタ出入りで位置フィードバック
+  position_feedback_tote_midair_height: 1.0 # tote上空の床からの高さ[m] この領域のエンドエフェクタ出入りで位置フィードバック
+  position_feedback_box_midair_height: 1.0 # box上空の床からの高さ[m] この領域のエンドエフェクタ出入りで位置フィードバック
+  position_feedback_ss_midair_height: 1.5 # ss上空の床からの高さ[m] この領域のエンドエフェクタ出入りで位置フィードバック
+  goal_joint_tolerance: 0.01 # 関節角の許容範囲[rad]
+  goal_orientation_tolerance: 0.01 # 姿勢許容値
+  goal_position_tolerance: 0.001 # 位置許容値[m] 球の半径
+  weight_scale_timeout_time: 5.0 # 重量計のタイムアウト
+  weight_scale_no_item_weight_tolerance: 0.010 # アイテムを持っていないと判定する重量の許容範囲[kg]
+  weight_scale_item_weight_tolerance: 0.5 # アイテム重量の許容範囲[係数 0~1]
+  compare_joint_tolerance: 0.01 # 関節角比較の許容値(PickExecuteの現在値判定)

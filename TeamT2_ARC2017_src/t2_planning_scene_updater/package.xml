@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<package>
+  <name>t2_planning_scene_updater</name>
+  <version>0.0.0</version>
+  <description>The t2_planning_scene_updater package</description>
+  <maintainer email="Ksa-rc2017@ml.toshiba.co.jp">Toshiba Corporation, Toshiba Infrastructure Systems &amp; Solutions Corporation</maintainer>
+  <license>BSD</license>
+  <author>Toshiba Corporation, Toshiba Infrastructure Systems &amp; Solutions Corporation</author>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <build_depend>roscpp</build_depend>
+  <build_depend>pcl</build_depend>
+  <build_depend>pcl_ros</build_depend>
+  <build_depend>moveit_core</build_depend>
+  <build_depend>moveit_ros_planning</build_depend>
+  <build_depend>moveit_ros_move_group</build_depend>
+  <build_depend>moveit_ros_perception</build_depend>
+  <build_depend>moveit_ros_planning_interface</build_depend>
+  <build_depend>geometric_shapes</build_depend>
+  <build_depend>t2_msgs</build_depend>
+  <build_depend>catch_robot_msgs</build_depend>
+  <build_depend>roslint</build_depend>
+
+  <run_depend>roscpp</run_depend>
+  <run_depend>pcl</run_depend>
+  <run_depend>pcl_ros</run_depend>
+  <run_depend>moveit_core</run_depend>
+  <run_depend>moveit_ros_planning</run_depend>
+  <run_depend>moveit_ros_move_group</run_depend>
+  <run_depend>moveit_ros_perception</run_depend>
+  <run_depend>moveit_ros_planning_interface</run_depend>
+  <run_depend>geometric_shapes</run_depend>
+  <run_depend>t2_msgs</run_depend>
+  <run_depend>catch_robot_msgs</run_depend>
+  <run_depend>message_runtime</run_depend>
+  <run_depend>roslint</run_depend>
+
+</package>

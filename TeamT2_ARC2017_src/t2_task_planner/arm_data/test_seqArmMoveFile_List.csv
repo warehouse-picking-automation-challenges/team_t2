@@ -1,0 +1,7 @@
+# テスト用アーム指定位置移動用定義ファイルを列挙する
+# ファイルパス名は、test_seqArmDataFilePath.csvにて定義
+# 以降に実行ファイル名
+#
+seq_move_sample1.csv
+seq_move_sample2.csv
+seq_move_sample3.csv

@@ -1,0 +1,99 @@
+<library path="lib/librobot_vision_manager">
+    <class name="T2_robot_vision/robot_vision_manager"
+           type="T2_robot_vision::robot_vision_manager"
+           base_class_type="nodelet::Nodelet">
+        <description>
+            Data Acquisition Nodelet.
+        </description>
+    </class>
+</library>
+<library path="lib/librobot_vision_capture_realsense">
+    <class name="T2_robot_vision/robot_vision_capture_realsense"
+           type="T2_robot_vision::robot_vision_capture_realsense"
+           base_class_type="nodelet::Nodelet">
+        <description>
+            Capture RealSense Nodelet.
+        </description>
+    </class>
+</library>
+<library path="lib/librobot_vision_capture_ensenso">
+    <class name="T2_robot_vision/robot_vision_capture_ensenso"
+           type="T2_robot_vision::robot_vision_capture_ensenso"
+           base_class_type="nodelet::Nodelet">
+        <description>
+            Capture Ensenso Nodelet.
+        </description>
+    </class>
+</library>
+<library path="lib/librobot_vision_unification">
+    <class name="T2_robot_vision/robot_vision_unification"
+           type="T2_robot_vision::robot_vision_unification"
+           base_class_type="nodelet::Nodelet">
+        <description>
+            Data Unification Nodelet.
+        </description>
+    </class>
+</library>
+<library path="lib/librobot_vision_segment">
+  <class name="T2_robot_vision/robot_vision_segment"
+         type="T2_robot_vision::robot_vision_segment"
+         base_class_type="nodelet::Nodelet">
+    <description>
+      Data Segmentation Nodelet.
+    </description>
+  </class>
+</library>
+<library path="lib/librobot_vision_recognition">
+  <class name="T2_robot_vision/robot_vision_recognition"
+         type="T2_robot_vision::robot_vision_recognition"
+         base_class_type="nodelet::Nodelet">
+    <description>
+      Item Recognition Nodelet.
+    </description>
+  </class>
+</library>
+<library path="lib/librobot_vision_findplane">
+  <class name="T2_robot_vision/robot_vision_findplane"
+         type="T2_robot_vision::robot_vision_findplane"
+         base_class_type="nodelet::Nodelet">
+    <description>
+      Item Recognition Nodelet.
+    </description>
+  </class>
+</library>
+<library path="lib/librobot_vision_recognition2">
+  <class name="T2_robot_vision/robot_vision_recognition2"
+         type="T2_robot_vision::robot_vision_recognition2"
+         base_class_type="nodelet::Nodelet">
+    <description>
+      Item Recognition Nodelet.
+    </description>
+  </class>
+</library>
+<library path="lib/librobot_vision_tottori">
+  <class name="T2_robot_vision/robot_vision_tottori"
+         type="T2_robot_vision::robot_vision_tottori"
+         base_class_type="nodelet::Nodelet">
+    <description>
+      Item Recognition Nodelet.
+    </description>
+  </class>
+</library>
+<library path="lib/librobot_vision_calibration">
+  <class name="T2_robot_vision/robot_vision_calibration"
+         type="T2_robot_vision::robot_vision_calibration"
+         base_class_type="nodelet::Nodelet">
+    <description>
+      Environment Recognition Nodelet.
+    </description>
+  </class>
+</library>
+<library path="lib/librobot_vision_occupancy">
+  <class name="T2_robot_vision/robot_vision_occupancy"
+         type="T2_robot_vision::robot_vision_occupancy"
+         base_class_type="nodelet::Nodelet">
+    <description>
+      Occupancy Calculate Nodelet.
+    </description>
+  </class>
+</library>

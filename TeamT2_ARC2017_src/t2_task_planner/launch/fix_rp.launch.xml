@@ -1,0 +1,54 @@
+<launch>
+  <group ns="fix_rp">
+    <arg name="data_path" value="$(find t2_task_planner)/config/fix_rp" />
+    <rosparam command="load" file="$(arg data_path)/rp_1604.yaml" ns="rp1604" />
+    <rosparam command="load" file="$(arg data_path)/rp_1610.yaml" ns="rp1610" />
+    <rosparam command="load" file="$(arg data_path)/rp_1615.yaml" ns="rp1615" />
+    <rosparam command="load" file="$(arg data_path)/rp_1620.yaml" ns="rp1620" />
+    <rosparam command="load" file="$(arg data_path)/rp_1626.yaml" ns="rp1626" />
+    <rosparam command="load" file="$(arg data_path)/rp_1637.yaml" ns="rp1637" />
+    <rosparam command="load" file="$(arg data_path)/rp_1701.yaml" ns="rp1701" />
+    <rosparam command="load" file="$(arg data_path)/rp_1702.yaml" ns="rp1702" />
+    <rosparam command="load" file="$(arg data_path)/rp_1703.yaml" ns="rp1703" />
+    <rosparam command="load" file="$(arg data_path)/rp_1704.yaml" ns="rp1704" />
+    <rosparam command="load" file="$(arg data_path)/rp_1705.yaml" ns="rp1705" />
+    <rosparam command="load" file="$(arg data_path)/rp_1706.yaml" ns="rp1706" />
+    <rosparam command="load" file="$(arg data_path)/rp_1707.yaml" ns="rp1707" />
+    <rosparam command="load" file="$(arg data_path)/rp_1708.yaml" ns="rp1708" />
+    <rosparam command="load" file="$(arg data_path)/rp_1709.yaml" ns="rp1709" />
+    <rosparam command="load" file="$(arg data_path)/rp_1710.yaml" ns="rp1710" />
+    <rosparam command="load" file="$(arg data_path)/rp_1711.yaml" ns="rp1711" />
+    <rosparam command="load" file="$(arg data_path)/rp_1712.yaml" ns="rp1712" />
+    <rosparam command="load" file="$(arg data_path)/rp_1713.yaml" ns="rp1713" />
+    <rosparam command="load" file="$(arg data_path)/rp_1714.yaml" ns="rp1714" />
+    <rosparam command="load" file="$(arg data_path)/rp_1715.yaml" ns="rp1715" />
+    <rosparam command="load" file="$(arg data_path)/rp_1716.yaml" ns="rp1716" />
+    <rosparam command="load" file="$(arg data_path)/rp_1717.yaml" ns="rp1717" />
+    <rosparam command="load" file="$(arg data_path)/rp_1718.yaml" ns="rp1718" />
+    <rosparam command="load" file="$(arg data_path)/rp_1719.yaml" ns="rp1719" />
+    <rosparam command="load" file="$(arg data_path)/rp_1720.yaml" ns="rp1720" />
+    <rosparam command="load" file="$(arg data_path)/rp_1721.yaml" ns="rp1721" />
+    <rosparam command="load" file="$(arg data_path)/rp_1722.yaml" ns="rp1722" />
+    <rosparam command="load" file="$(arg data_path)/rp_1723.yaml" ns="rp1723" />
+    <rosparam command="load" file="$(arg data_path)/rp_1724.yaml" ns="rp1724" />
+    <rosparam command="load" file="$(arg data_path)/rp_1725.yaml" ns="rp1725" />
+    <rosparam command="load" file="$(arg data_path)/rp_1726.yaml" ns="rp1726" />
+    <rosparam command="load" file="$(arg data_path)/rp_1727.yaml" ns="rp1727" />
+    <rosparam command="load" file="$(arg data_path)/rp_1728.yaml" ns="rp1728" />
+    <rosparam command="load" file="$(arg data_path)/rp_1729.yaml" ns="rp1729" />
+    <rosparam command="load" file="$(arg data_path)/rp_1730.yaml" ns="rp1730" />
+    <rosparam command="load" file="$(arg data_path)/rp_1731.yaml" ns="rp1731" />
+    <rosparam command="load" file="$(arg data_path)/rp_1732.yaml" ns="rp1732" />
+    <rosparam command="load" file="$(arg data_path)/rp_1733.yaml" ns="rp1733" />
+    <rosparam command="load" file="$(arg data_path)/rp_1734.yaml" ns="rp1734" />
+    <rosparam command="load" file="$(arg data_path)/rp_1735.yaml" ns="rp1735" />
+    <rosparam command="load" file="$(arg data_path)/rp_1736.yaml" ns="rp1736" />
+    <rosparam command="load" file="$(arg data_path)/rp_1737.yaml" ns="rp1737" />
+    <rosparam command="load" file="$(arg data_path)/rp_1738.yaml" ns="rp1738" />
+    <rosparam command="load" file="$(arg data_path)/rp_1739.yaml" ns="rp1739" />
+    <rosparam command="load" file="$(arg data_path)/rp_1740.yaml" ns="rp1740" />
+    <rosparam command="load" file="$(arg data_path)/rp_9001.yaml" ns="rp9001" />
+    <rosparam command="load" file="$(arg data_path)/rp_9002.yaml" ns="rp9002" />
+    <rosparam command="load" file="$(arg data_path)/rp_9003.yaml" ns="rp9003" />
+  </group>
+</launch>

@@ -1,0 +1,25 @@
+# Job番号
+uint32 job_no
+
+# 撮影位置(カメラ)番号
+uint32 cam_id
+
+# 入力画像座標
+float32 x0
+float32 y0
+
+# 距離値
+float32 d0
+
+# 変換の種類(0:カラー座標→距離座標, 1:距離座標→カラー座標)
+uint32 flg
+
+---
+
+# Job番号
+uint32 job_no
+
+# 出力画像座標
+float32 x1
+float32 y1
+

@@ -1,0 +1,24 @@
+﻿<launch>
+
+  <arg name="manager" />
+  <arg name="occupancy" />
+
+  <group ns="$(arg occupancy)">
+
+    <!-- Load occupancy nodelet -->
+    <node pkg="nodelet" type="nodelet" name="robot_vision_occupancy"
+          args="load T2_robot_vision/robot_vision_occupancy $(arg manager)" output="screen">
+      <param name="resolution" type="double" value="0.01" />
+      <param name="interval" type="double" value="0.01" />
+      <param name="remove_area" type="double" value="1.00" />
+      <param name="save_bag" type="int" value="0" />
+      <remap from="occupancy_res" to="/occupancy_res" />
+      <!-- 
+      <remap from="occupancy_target" to="/occupancy_target" />
+      -->
+    </node>
+
+
+  </group>
+
+</launch>

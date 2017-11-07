@@ -1,0 +1,9 @@
+<launch>
+  <arg name="disable_weight_check" default="false" />
+  <env name="ROSCONSOLE_CONFIG_FILE" value="$(find t2_motion_planner)/config/custom_rosconsole.conf"/>
+  <arg name="t2_motion_planner_launch-prefix" default="xterm -ls -xrm 'XTerm*selectToClipboard: true' -xrm 'XTerm.vt100.allowTitleOps: false' -T t2_motion_planner -e" />
+  <node name="t2_motion_planner" pkg="t2_motion_planner" type="t2_motion_planner" required="true" launch-prefix="$(arg t2_motion_planner_launch-prefix)" >
+    <rosparam command="load" file="$(find t2_motion_planner)/config/motion_planner.yaml" />
+    <param name="motion_planner_configs/disable_weight_check" value="$(arg disable_weight_check)" />
+  </node>
+</launch>

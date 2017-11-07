@@ -1,0 +1,11 @@
+# テスト用アーム指定位置移動用定義ファイルのパスを指定する
+#・path未定義は本ファイルと同一フォルダ(//home/toshiba/catkin_ws/src/apc_motion_plan/plan_main/arm_data/)を参照する
+#  メモ：共有フォルダ指定(//media/sf_Shared_folder/arm_log/)パス名称は環境によって異なる
+#
+#・ファイルパス名定義
+#input_file_path,入力ファイルパス名
+#output_file_path,出力ファイルパス名
+#
+input_file_path,//home/toshiba/catkin_ws/src/apc_motion_plan/plan_main/arm_data/
+output_file_path,//home/toshiba/catkin_ws/src/apc_motion_plan/plan_main/arm_data/
+#

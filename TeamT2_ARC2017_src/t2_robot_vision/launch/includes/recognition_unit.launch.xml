@@ -1,0 +1,47 @@
+<launch>
+
+  <arg name="manager" />
+  <arg name="recog" />
+
+  <group ns="$(arg recog)">
+    
+    <!-- Load calibration nodelet -->
+    <node pkg="nodelet" type="nodelet" name="robot_vision_calibration"
+          args="load T2_robot_vision/robot_vision_calibration $(arg manager)" output="screen">
+      <remap from="recognize_res" to="/recognize_res" />
+    </node>
+    
+    <!-- Load segmentation nodelet -->
+    <node pkg="nodelet" type="nodelet" name="robot_vision_segment"
+          args="load T2_robot_vision/robot_vision_segment $(arg manager)" output="screen" />
+    <node pkg="T2_robot_vision" type="seg_ARC_ROS.py" name="seg_ARC_ROS" output="screen" />
+    
+    <!-- run recognition node (Python) -->
+    <node pkg="T2_robot_vision" type="recognition_program.py" name="robot_vision_recognition" output="screen" />
+    <node pkg="T2_robot_vision" type="dist_learning.py" name="dist_learning" output="screen" />
+    <node pkg="nodelet" type="nodelet" name="robot_vision_findplane" 
+          args="load T2_robot_vision/robot_vision_findplane $(arg manager)" output="screen" />
+    
+    <!--node pkg="nodelet" type="nodelet" name="robot_vision_recognition"
+          args="load T2_robot_vision/robot_vision_recognition $(arg manager)" output="screen" /-->
+
+    <!-- Load tottori nodelet -->
+    <node pkg="nodelet" type="nodelet" name="robot_vision_tottori"
+          args="load T2_robot_vision/robot_vision_tottori $(arg manager)" output="screen" />
+
+    <!-- Load recognition2 nodelet -->
+    <node pkg="nodelet" type="nodelet" name="robot_vision_recognition2"
+          args="load T2_robot_vision/robot_vision_recognition2 $(arg manager)" output="screen" />
+    
+    <!-- Load unification nodelet -->
+    <node pkg="nodelet" type="nodelet" name="robot_vision_unification" 
+          args="load T2_robot_vision/robot_vision_unification $(arg manager)" output="screen" />
+
+<!--
+  <group ns="t2_database">
+  <include file="$(find t2_database)/launch/grasp_info_list.launch.xml" />
+  </group>
+-->
+  </group>
+
+</launch>

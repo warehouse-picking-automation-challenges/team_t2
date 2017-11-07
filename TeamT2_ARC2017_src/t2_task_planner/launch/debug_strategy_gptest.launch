@@ -1,0 +1,17 @@
+<launch>
+  <group ns="t2_task_planner">
+    <include file="$(find t2_task_planner)/launch/fix_rp.launch.xml" />
+    <rosparam command="load" file="$(find t2_task_planner)/config/task_strategy.yaml" ns="task_strategy" />
+  </group>
+  
+  <!-- Database -->
+  <include file="$(find t2_database)/launch/t2_database.launch" />
+  
+  <!-- MoveGroup -->
+  <include file="$(find t2_task_planner)/launch/demo_gptest.launch" />
+  
+  <node name="t2_task_strategy_viewer" pkg="t2_task_planner" type="t2_task_strategy_viewer" required="true" output="screen" launch-prefix="xterm -ls -xrm 'XTerm*selectToClipboard: true' -geometry 80x32+0+700 -e" />
+  <!-- <node name="t2_task_strategy_viewer" pkg="t2_task_planner" type="t2_task_strategy_viewer" required="true" output="log" /> -->
+
+  <node name="gptest_update" pkg="t2_task_planner" type="gptest_update.py" output="screen"/>
+</launch>

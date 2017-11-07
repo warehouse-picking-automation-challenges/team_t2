@@ -1,0 +1,11 @@
+# Job番号
+uint32 job_no
+
+# 撮影位置(カメラ)番号
+uint32 cam_id
+---
+# Job番号
+uint32 job_no
+
+# 撮影データ
+catch_robot_vision/CapturedData data

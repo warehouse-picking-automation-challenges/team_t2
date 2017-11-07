@@ -1,0 +1,155 @@
+<launch>
+
+  <!-- Start nodelet manager -->
+  <arg name="manager" value="vision_main_nodelet_manager" /> 
+  <node pkg="nodelet" type="nodelet" args="manager" name="$(arg manager)" output="screen">
+    <param name="num_worker_threads" value="40" />
+  </node>
+
+  <!-- Load RealSense driver and capture nodelet -->
+
+  <node pkg="nodelet" type="nodelet" args="load T2_robot_vision/robot_vision_capture_ensenso $(arg manager)"
+  		name="robot_vision_capture_ensenso" output="screen">
+  	<!--<remap from="capture_srv_ensenso" to="capture_srv_ensenso0" />-->
+  </node>
+  
+  <!-- 1号機用 -->
+  <rosparam command="load" file="$(find T2_robot_vision)/data/calibration1.yaml" />
+  <rosparam command="load" file="$(find T2_robot_vision)/data/create_img1.yaml" />
+  <rosparam command="load" file="$(find T2_robot_vision)/data/occupancy1.yaml" />
+
+  <!-- 2号機用 -->
+  <!--
+  <rosparam command="load" file="$(find T2_robot_vision)/data/calibration2.yaml" />
+  <rosparam command="load" file="$(find T2_robot_vision)/data/create_img2.yaml" />
+  <rosparam command="load" file="$(find T2_robot_vision)/data/occupancy2.yaml" />
+  -->
+
+  <!-- Load robot_vision_manager nodelet -->
+  <node pkg="nodelet" type="nodelet" name="robot_vision_manager" 
+        args="load T2_robot_vision/robot_vision_manager $(arg manager)" output="screen">
+    <param name="num_realsense_capture_unit" type="int" value="20" />
+    <param name="num_ensenso_capture_unit" type="int" value="1" />
+    <param name="num_recognition_unit" type="int" value="6" />
+    <param name="num_occupancy_unit" type="int" value="8"/>
+    <remap from="capture_srv0" to="camera0/capture_srv" />
+    <remap from="capture_srv1" to="camera1/capture_srv" />
+    <remap from="capture_srv2" to="camera2/capture_srv" />
+    <remap from="capture_srv3" to="camera3/capture_srv" />
+    <remap from="capture_srv4" to="camera4/capture_srv" />
+    <remap from="capture_srv5" to="camera5/capture_srv" />
+    <remap from="capture_srv6" to="camera6/capture_srv" />
+    <remap from="capture_srv7" to="camera7/capture_srv" />
+    <remap from="capture_srv8" to="camera8/capture_srv" />
+    <remap from="capture_srv9" to="camera9/capture_srv" />
+    <remap from="capture_srv11" to="camera11/capture_srv" />
+    <remap from="capture_srv12" to="camera12/capture_srv" />
+    <remap from="capture_srv13" to="camera13/capture_srv" />
+    <remap from="capture_srv14" to="camera14/capture_srv" />
+    <remap from="capture_srv15" to="camera15/capture_srv" />
+    <remap from="capture_srv16" to="camera16/capture_srv" />
+    <remap from="capture_srv17" to="camera17/capture_srv" />
+    <remap from="capture_srv18" to="camera18/capture_srv" />
+    <remap from="capture_srv19" to="camera19/capture_srv" />
+    <remap from="recognition_target0" to="recog0/recognition_target" />
+    <remap from="recognition_target1" to="recog1/recognition_target" />
+    <remap from="recognition_target2" to="recog2/recognition_target" />
+    <remap from="recognition_target3" to="recog3/recognition_target" />
+    <remap from="recognition_target4" to="recog4/recognition_target" />
+    <remap from="recognition_target5" to="recog5/recognition_target" />
+    <remap from="occupancy_target0" to="occupancy0/occupancy_target" />
+    <remap from="occupancy_target1" to="occupancy1/occupancy_target" />
+    <remap from="occupancy_target2" to="occupancy2/occupancy_target" />
+    <remap from="occupancy_target3" to="occupancy3/occupancy_target" />
+    <remap from="occupancy_target4" to="occupancy4/occupancy_target" />
+    <remap from="occupancy_target5" to="occupancy5/occupancy_target" />
+    <remap from="occupancy_target6" to="occupancy6/occupancy_target" />
+    <remap from="occupancy_target7" to="occupancy7/occupancy_target" />
+  </node>
+  
+  <!-- Load recognition unit 0 -->
+  <include file="$(find T2_robot_vision)/launch/includes/recognition_unit.launch_NoBird.xml">
+    <arg name="manager" value="/$(arg manager)" />
+    <arg name="recog" value="recog0" />
+  </include>
+
+  <!-- Load recognition unit 1 -->
+  <include file="$(find T2_robot_vision)/launch/includes/recognition_unit.launch_NoBird.xml">
+    <arg name="manager" value="/$(arg manager)" />
+    <arg name="recog" value="recog1" />
+  </include>
+
+  <!-- Load recognition unit 2 -->
+  <include file="$(find T2_robot_vision)/launch/includes/recognition_unit.launch_NoBird.xml">
+    <arg name="manager" value="/$(arg manager)" />
+    <arg name="recog" value="recog2" />
+  </include>
+
+  <!-- Load recognition unit 3 -->
+  <include file="$(find T2_robot_vision)/launch/includes/recognition_unit.launch_NoBird.xml">
+    <arg name="manager" value="/$(arg manager)" />
+    <arg name="recog" value="recog3" />
+  </include>
+
+  <!-- Load recognition unit 4 -->
+  <include file="$(find T2_robot_vision)/launch/includes/recognition_unit.launch_NoBird.xml">
+    <arg name="manager" value="/$(arg manager)" />
+    <arg name="recog" value="recog4" />
+  </include>
+
+  <!-- Load recognition unit 5 -->
+  <include file="$(find T2_robot_vision)/launch/includes/recognition_unit.launch_NoBird.xml">
+    <arg name="manager" value="/$(arg manager)" />
+    <arg name="recog" value="recog5" />
+  </include>
+
+
+  <!-- Load occupancy unit 0 -->
+  <include file="$(find T2_robot_vision)/launch/includes/occupancy_unit.launch.xml">
+    <arg name="manager" value="/$(arg manager)" />
+    <arg name="occupancy" value="occupancy0" />
+  </include>
+
+<!-- Load occupancy unit 1 -->
+  <include file="$(find T2_robot_vision)/launch/includes/occupancy_unit.launch.xml">
+    <arg name="manager" value="/$(arg manager)" />
+    <arg name="occupancy" value="occupancy1" />
+  </include>
+
+<!-- Load occupancy unit 2 -->
+  <include file="$(find T2_robot_vision)/launch/includes/occupancy_unit.launch.xml">
+    <arg name="manager" value="/$(arg manager)" />
+    <arg name="occupancy" value="occupancy2" />
+  </include>
+
+<!-- Load occupancy unit 3 -->
+  <include file="$(find T2_robot_vision)/launch/includes/occupancy_unit.launch.xml">
+    <arg name="manager" value="/$(arg manager)" />
+    <arg name="occupancy" value="occupancy3" />
+  </include>
+
+<!-- Load occupancy unit 4 -->
+  <include file="$(find T2_robot_vision)/launch/includes/occupancy_unit.launch.xml">
+    <arg name="manager" value="/$(arg manager)" />
+    <arg name="occupancy" value="occupancy4" />
+  </include>
+
+<!-- Load occupancy unit 5 -->
+  <include file="$(find T2_robot_vision)/launch/includes/occupancy_unit.launch.xml">
+    <arg name="manager" value="/$(arg manager)" />
+    <arg name="occupancy" value="occupancy5" />
+  </include>
+
+<!-- Load occupancy unit 6 -->
+  <include file="$(find T2_robot_vision)/launch/includes/occupancy_unit.launch.xml">
+    <arg name="manager" value="/$(arg manager)" />
+    <arg name="occupancy" value="occupancy6" />
+  </include>
+
+<!-- Load occupancy unit 7 -->
+  <include file="$(find T2_robot_vision)/launch/includes/occupancy_unit.launch.xml">
+    <arg name="manager" value="/$(arg manager)" />
+    <arg name="occupancy" value="occupancy7" />
+  </include>
+
+</launch>

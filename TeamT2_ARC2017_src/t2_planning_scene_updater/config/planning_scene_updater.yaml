@@ -1,0 +1,3 @@
+planning_scene_updater_configs:
+  approach_gp_storage_other_items_collision_check: false # GAP2->GP の対象アイテム以外とエンドエフェクタの干渉チェック
+  attach_item_pose_gp: true # true: GPの姿勢でアタッチ, false: プランニングシーンの姿勢でアタッチ

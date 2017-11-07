@@ -1,0 +1,6 @@
+<launch>
+  <group>
+    <node name="t2_ui" pkg="t2_ui" type="t2_ui" required="true"
+      launch-prefix="xterm -ls -xrm 'XTerm*selectToClipboard: true' -xrm 'XTerm*translations: #override &lt;Key&gt;Up: \n &lt;Key&gt;Down: \n &lt;Key&gt;Left: \n &lt;Key&gt;Right: ' -geometry 80x32+0+700 -bg darkblue -e" />
+  </group>
+</launch>

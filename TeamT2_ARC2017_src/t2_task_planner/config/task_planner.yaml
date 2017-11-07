@@ -1,0 +1,91 @@
+task_planner_configs:
+  arm_speed_high: 1.0                   # アーム速度(高速)
+  arm_speed_middle: 0.7                 # アーム速度(中速)
+  arm_speed_low: 0.25                   # アーム速度(低速)
+  arm_speed_gap1: 1.0                   # アーム速度(SP/RAP4/GAP4 -> GAP1)
+  arm_speed_gap2: 1.0                   # アーム速度(GAP1 -> GAP2)
+  arm_speed_gp: 0.25                    # アーム速度(GAP2 -> GP)
+  arm_speed_gap3: 0.25                  # アーム速度(GP' -> GAP3)
+  arm_speed_gap4: 1.0                   # アーム速度(GAP3 -> GAP4)
+  arm_speed_back_gap1: 1.0              # アーム速度(GAP2 -> GAP1) : 逆再生
+  arm_speed_rap1: 1.0                   # アーム速度(GAP4 -> RAP1)
+  arm_speed_rap2: 1.0                   # アーム速度(RAP1 -> RAP2)
+  arm_speed_rp: 0.25                    # アーム速度(RAP2 -> RP)
+  arm_speed_back_rap2: 0.25             # アーム速度(RP -> RAP2) : 逆再生
+  arm_speed_back_rap1: 1.0              # アーム速度(RAP2 -> RAP1) : 逆再生
+  arm_speed_sp: 1.0                     # アーム速度(RAP4/GAP4 -> SP)
+  grasp_point_score_threshold: 0.1      # 把持スコアの閾値[0~1]
+  item_probability_threshold: 0.1       # アイテム認識スコアの閾値[0~1]
+  max_recognition_retry_count: 1        # 認識リトライ上限数
+  wait_item_recognition_timeout: 30     # アイテム認識待ちタイムアウト[s]
+  wait_octomap_recognition_timeout: 30  # 箱詰認識待ちタイムアウト[s]
+  protrusion_threshold: 0.02            # はみ出し量の閾値[m]
+  failed_gp_distance_threshold: 0.02    # 失敗GPとの距離の閾値[m]
+  max_failed_gp_count: 10               # 失敗GP数の上限
+  pick_execute_attempts: 3              # 同一アイテムのPickExecute試行回数
+  move_excluded_place_id_list: [2]      # Bin間移動先およびBin内移動元の対象外place_idリスト
+  gap_lift_up_length: 0.19              # 把持後にZ方向に持ち上げる距離[m]
+  rap_lift_up_length: 0.03              # リリース後にZ方向に持ち上げる距離[m]
+  use_dummy_pack: false                 # Pickタスクでのダミー箱詰計画の使用
+  rap1_rp_diff_length:                  # RAP1に対するRPの相対距離 [x[m], y[m], z[m]]
+                                        # Box内のアイテム数に応じてサイクル
+  - place_id: 13                        # Box1
+    diff: [
+      [ 0.1,  0.1, -0.10],                 
+      [ 0.1, -0.1, -0.10],
+      [-0.1, -0.1, -0.10],
+      [-0.1,  0.1, -0.10]
+    ]
+  - place_id: 14                        # Box2
+    diff: [
+      [ 0.1,  0.1, -0.10],                 
+      [ 0.1, -0.1, -0.10],
+      [-0.1, -0.1, -0.10],
+      [-0.1,  0.1, -0.10]
+    ]
+  - place_id: 15                        # Box3
+    diff: [
+      [-0.1, -0.1, -0.10],                 
+      [ 0.1, -0.1, -0.10],
+      [ 0.1,  0.1, -0.10],
+      [-0.1,  0.1, -0.10]
+    ]
+  - place_id: 1                         # BinA
+    diff: [
+      [ 0.1,  0.1, -0.40],                 
+      [ 0.1, -0.1, -0.40],
+      [-0.1, -0.1, -0.40],
+      [-0.1,  0.1, -0.40]
+    ]
+  - place_id: 2                         # BinB
+    diff: [
+      [ 0.1,  0.1, -0.40],                 
+      [ 0.1, -0.1, -0.40],
+      [-0.1, -0.1, -0.40],
+      [-0.1,  0.1, -0.40]
+    ]
+  - place_id: 3                         # BinC
+    diff: [
+      [ 0.1,  0.1, -0.40],                 
+      [ 0.1, -0.1, -0.40],
+      [-0.1, -0.1, -0.40],
+      [-0.1,  0.1, -0.40]
+    ]
+  - place_id: 4                         # BinD
+    diff: [
+      [ 0.1,  0.1, -0.40],                 
+      [ 0.1, -0.1, -0.40],
+      [-0.1, -0.1, -0.40],
+      [-0.1,  0.1, -0.40]
+    ]
+  - place_id: 5                         # BinE
+    diff: [
+      [ 0.1,  0.1, -0.40],                 
+      [ 0.1, -0.1, -0.40],
+      [-0.1, -0.1, -0.40],
+      [-0.1,  0.1, -0.40]
+    ]
+  rp_rap2_diff_length: [0.0, 0.0, 0.1]  # RPに対するRAP2の相対距離 [x[m], y[m], z[m]]
+
+# task_planner.yamlと同一ディレクトリで下記コマンド実行
+# rosparam load task_planner.yaml /t2_task_planner

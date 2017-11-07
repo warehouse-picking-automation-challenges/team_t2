@@ -1,0 +1,8 @@
+# アイテム番号
+uint32 category_id
+
+---
+
+# CAD番号
+uint32 cad_id
+

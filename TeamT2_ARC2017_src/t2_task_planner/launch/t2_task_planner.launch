@@ -1,0 +1,14 @@
+<launch>
+  <env name="ROSCONSOLE_CONFIG_FILE" value="$(find t2_task_planner)/config/custom_rosconsole.conf"/>
+  <arg name="t2_takplanner_launch-prefix" default="xterm -ls -xrm 'XTerm*selectToClipboard: true' -xrm 'XTerm.vt100.allowTitleOps: false' -T t2_task_planner -e" />
+  <arg name="t2_takplanner_parameter_ns" value="/t2_task_planner/config" />
+
+  <group ns="t2_task_planner">
+    <include file="$(find t2_task_planner)/launch/fix_rp.launch.xml" />
+  </group>
+
+  <node name="t2_task_planner" pkg="t2_task_planner" type="t2_task_planner" required="true" launch-prefix="$(arg t2_takplanner_launch-prefix)" >
+    <rosparam command="load" file="$(find t2_task_planner)/config/task_planner.yaml" />
+    <rosparam command="load" file="$(find t2_task_planner)/config/task_strategy.yaml" ns="task_strategy" />
+  </node>
+</launch>
